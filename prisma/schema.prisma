@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["test_taking_app"]
+}
+
+enum QuestionType {
+  multiple_choice
+  true_false
+
+  @@schema("test_taking_app")
+}
+
+enum AttemptStatus {
+  in_progress
+  completed
+
+  @@schema("test_taking_app")
+}
+
+model Test {
+  id             Int           @id @default(autoincrement())
+  title          String
+  description    String?
+  sourceFilename String?
+  rawImport      Json?
+  createdAt      DateTime      @default(now())
+  questions      Question[]
+  attempts       TestAttempt[]
+
+  @@map("tests")
+  @@schema("test_taking_app")
+}
+
+model Question {
+  id          Int               @id @default(autoincrement())
+  testId      Int
+  test        Test              @relation(fields: [testId], references: [id], onDelete: Cascade)
+  orderIndex  Int
+  type        QuestionType
+  prompt      String
+  explanation String?
+  options     QuestionOption[]
+  responses   AttemptResponse[]
+
+  @@map("questions")
+  @@schema("test_taking_app")
+}
+
+model QuestionOption {
+  id         Int      @id @default(autoincrement())
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  orderIndex Int
+  text       String
+  isCorrect  Boolean
+
+  selectedByResponses AttemptResponse[] @relation("SelectedOption")
+
+  @@map("question_options")
+  @@schema("test_taking_app")
+}
+
+model TestAttempt {
+  id             Int               @id @default(autoincrement())
+  testId         Int
+  test           Test              @relation(fields: [testId], references: [id], onDelete: Cascade)
+  status         AttemptStatus     @default(completed)
+  totalQuestions Int
+  correctCount   Int
+  startedAt      DateTime
+  completedAt    DateTime
+  responses      AttemptResponse[]
+
+  @@map("test_attempts")
+  @@schema("test_taking_app")
+}
+
+model AttemptResponse {
+  id               Int             @id @default(autoincrement())
+  attemptId        Int
+  attempt          TestAttempt     @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId       Int
+  question         Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  selectedOptionId Int?
+  selectedOption   QuestionOption? @relation("SelectedOption", fields: [selectedOptionId], references: [id])
+  isCorrect        Boolean
+
+  @@map("attempt_responses")
+  @@schema("test_taking_app")
+}
