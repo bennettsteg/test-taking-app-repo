@@ -62,17 +62,17 @@ export function TakeTestClient({ testId, questions }: { testId: number; question
         />
       ))}
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
 
       <div className="flex items-center justify-between">
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm text-muted">
           {answeredCount} of {questions.length} answered
         </p>
         <button
           type="button"
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800 disabled:opacity-50"
+          className="rounded-md bg-surface px-4 py-2 text-sm text-foreground hover:bg-surface-hover hover:text-foreground-invert disabled:opacity-50"
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>

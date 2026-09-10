@@ -128,20 +128,20 @@ export function HandAuthoredForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-4 rounded-lg border border-neutral-200 bg-white p-4">
+      <div className="space-y-4 rounded-lg border border-border bg-surface p-4">
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-black">
+          <label htmlFor="title" className="block text-sm font-medium">
             Title
           </label>
           <input
             id="title"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
-            className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-sm"
+            className="mt-1 block w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-foreground focus:outline-none"
           />
         </div>
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-black">
+          <label htmlFor="description" className="block text-sm font-medium">
             Description (optional)
           </label>
           <textarea
@@ -149,7 +149,7 @@ export function HandAuthoredForm() {
             value={description}
             onChange={(event) => setDescription(event.target.value)}
             rows={2}
-            className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-sm"
+            className="mt-1 block w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-foreground focus:outline-none"
           />
         </div>
       </div>
@@ -157,27 +157,27 @@ export function HandAuthoredForm() {
       {questions.map((question, index) => (
         <div
           key={question.id}
-          className="space-y-4 rounded-lg border border-neutral-200 bg-white p-4"
+          className="space-y-4 rounded-lg border border-border bg-surface p-4"
         >
           <div className="flex items-start justify-between gap-4">
-            <h2 className="text-sm font-semibold text-black">Question {index + 1}</h2>
+            <h2 className="text-sm font-semibold">Question {index + 1}</h2>
             <button
               type="button"
               onClick={() => removeQuestion(question.id)}
-              className="text-sm text-neutral-500 hover:text-crimson"
+              className="rounded px-1.5 py-0.5 text-sm text-muted hover:bg-surface-hover hover:text-foreground-invert"
             >
               Remove
             </button>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-black">Type</label>
+            <label className="block text-sm font-medium">Type</label>
             <select
               value={question.type}
               onChange={(event) =>
                 setQuestionType(question.id, event.target.value as "multiple_choice" | "true_false")
               }
-              className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-sm"
+              className="mt-1 block w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-foreground focus:outline-none"
             >
               <option value="multiple_choice">Multiple choice</option>
               <option value="true_false">True/false</option>
@@ -185,19 +185,19 @@ export function HandAuthoredForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-black">Prompt</label>
+            <label className="block text-sm font-medium">Prompt</label>
             <input
               value={question.prompt}
               onChange={(event) =>
                 updateQuestion(question.id, (q) => ({ ...q, prompt: event.target.value }))
               }
-              className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-sm"
+              className="mt-1 block w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-foreground focus:outline-none"
             />
           </div>
 
           {question.type === "multiple_choice" ? (
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-black">
+              <label className="block text-sm font-medium">
                 Options (mark the correct one)
               </label>
               {question.options.map((option) => (
@@ -226,13 +226,13 @@ export function HandAuthoredForm() {
                           : q,
                       )
                     }
-                    className="flex-1 rounded-md border border-neutral-300 px-3 py-2 text-sm"
+                    className="flex-1 rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-foreground focus:outline-none"
                   />
                   <button
                     type="button"
                     onClick={() => removeOption(question.id, option.id)}
                     disabled={question.options.length <= 2}
-                    className="text-sm text-neutral-500 hover:text-crimson disabled:opacity-30"
+                    className="rounded px-1.5 py-0.5 text-sm text-muted hover:bg-surface-hover hover:text-foreground-invert disabled:opacity-30"
                   >
                     Remove
                   </button>
@@ -242,14 +242,14 @@ export function HandAuthoredForm() {
                 type="button"
                 onClick={() => addOption(question.id)}
                 disabled={question.options.length >= 4}
-                className="text-sm text-crimson hover:underline disabled:opacity-30"
+                className="rounded px-1.5 py-0.5 text-sm hover:bg-surface-hover hover:text-foreground-invert disabled:opacity-30"
               >
                 + Add option
               </button>
             </div>
           ) : (
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-black">Correct answer</label>
+              <label className="block text-sm font-medium">Correct answer</label>
               <div className="flex gap-4 text-sm">
                 <label className="flex items-center gap-2">
                   <input
@@ -282,14 +282,14 @@ export function HandAuthoredForm() {
           )}
 
           <div>
-            <label className="block text-sm font-medium text-black">Explanation (optional)</label>
+            <label className="block text-sm font-medium">Explanation (optional)</label>
             <textarea
               value={question.explanation}
               onChange={(event) =>
                 updateQuestion(question.id, (q) => ({ ...q, explanation: event.target.value }))
               }
               rows={2}
-              className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-sm"
+              className="mt-1 block w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-foreground focus:outline-none"
             />
           </div>
         </div>
@@ -298,18 +298,18 @@ export function HandAuthoredForm() {
       <button
         type="button"
         onClick={addQuestion}
-        className="rounded-md border border-neutral-300 px-4 py-2 text-sm text-black hover:bg-neutral-100"
+        className="rounded-md border border-border px-4 py-2 text-sm hover:bg-surface-hover hover:text-foreground-invert"
       >
         + Add Question
       </button>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
 
       <div>
         <button
           type="submit"
           disabled={!canSubmit}
-          className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800 disabled:opacity-50"
+          className="rounded-md bg-surface px-4 py-2 text-sm text-foreground hover:bg-surface-hover hover:text-foreground-invert disabled:opacity-50"
         >
           {isSubmitting ? "Creating..." : "Create Test"}
         </button>

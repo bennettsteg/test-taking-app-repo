@@ -30,11 +30,11 @@ export default async function AttemptHistoryPage({
       <h1 className="mb-4 text-lg font-semibold">{test.title} &mdash; Attempts</h1>
 
       {test.attempts.length === 0 ? (
-        <p className="text-neutral-600">No attempts yet.</p>
+        <p className="text-muted">No attempts yet.</p>
       ) : (
         <table className="w-full border-collapse text-sm">
           <thead>
-            <tr className="border-b border-neutral-200 text-left text-neutral-500">
+            <tr className="border-b border-border text-left text-muted">
               <th className="py-2">Date</th>
               <th className="py-2">Score</th>
               <th className="py-2"></th>
@@ -42,7 +42,7 @@ export default async function AttemptHistoryPage({
           </thead>
           <tbody>
             {test.attempts.map((attempt) => (
-              <tr key={attempt.id} className="border-b border-neutral-100">
+              <tr key={attempt.id} className="border-b border-border">
                 <td className="py-2">{new Date(attempt.completedAt).toLocaleString()}</td>
                 <td className="py-2">
                   {attempt.correctCount} / {attempt.totalQuestions}
@@ -50,7 +50,7 @@ export default async function AttemptHistoryPage({
                 <td className="py-2 text-right">
                   <Link
                     href={`/tests/${test.id}/attempts/${attempt.id}`}
-                    className="text-crimson hover:underline"
+                    className="rounded px-1.5 py-0.5 hover:bg-surface-hover hover:text-foreground-invert"
                   >
                     View
                   </Link>

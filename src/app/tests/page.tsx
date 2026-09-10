@@ -16,11 +16,11 @@ export default async function LibraryPage() {
 
   if (tests.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-neutral-300 p-8 text-center">
-        <p className="text-neutral-600">No tests yet.</p>
+      <div className="rounded-lg border border-dashed border-border bg-surface p-8 text-center">
+        <p className="text-muted">No tests yet.</p>
         <Link
           href="/tests/create"
-          className="mt-3 inline-block rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800"
+          className="mt-3 inline-block rounded-md bg-surface px-4 py-2 text-sm text-foreground hover:bg-surface-hover hover:text-foreground-invert"
         >
           Create your first test
         </Link>

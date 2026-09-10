@@ -66,13 +66,13 @@ export function UploadForm() {
           name="file"
           type="file"
           accept="application/json,.json"
-          className="mt-1 block w-full text-sm"
+          className="mt-1 block w-full text-sm text-foreground file:mr-3 file:rounded-md file:border file:border-border file:bg-surface file:px-3 file:py-1.5 file:text-sm file:text-foreground hover:file:bg-surface-hover hover:file:text-foreground-invert"
         />
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
       {issues.length > 0 && (
-        <ul className="list-inside list-disc space-y-1 text-sm text-red-600">
+        <ul className="list-inside list-disc space-y-1 text-sm text-red-400">
           {issues.map((issue, index) => (
             <li key={index}>
               {issue.path.join(".")}: {issue.message}
@@ -84,7 +84,7 @@ export function UploadForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800 disabled:opacity-50"
+        className="rounded-md bg-surface px-4 py-2 text-sm text-foreground hover:bg-surface-hover hover:text-foreground-invert disabled:opacity-50"
       >
         {isSubmitting ? "Uploading..." : "Upload"}
       </button>

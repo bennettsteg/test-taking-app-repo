@@ -1,23 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --crimson: #9e1b32;
-  --crimson-dark: #7a1526;
+  --background: #121212;
+  --surface: #262626;
+  --surface-hover: #d4d4d4;
+  --border: #3f3f3f;
+  --muted: #a3a3a3;
+  --foreground: #ffffff;
+  --foreground-invert: #121212;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
   --color-foreground: var(--foreground);
-  --color-crimson: var(--crimson);
-  --color-crimson-dark: var(--crimson-dark);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-invert: var(--foreground-invert);
+  --font-sans: var(--font-source-serif);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-source-serif), Georgia, "Times New Roman", serif;
+}
+
+input[type="radio"] {
+  accent-color: var(--surface-hover);
 }

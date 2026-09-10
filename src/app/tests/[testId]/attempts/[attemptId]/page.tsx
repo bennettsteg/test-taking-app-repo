@@ -49,7 +49,7 @@ export default async function AttemptResultPage({
     <div className="space-y-4">
       <div>
         <h1 className="text-lg font-semibold">{attempt.test.title}</h1>
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm text-muted">
           Completed {new Date(attempt.completedAt).toLocaleString()}
         </p>
       </div>
