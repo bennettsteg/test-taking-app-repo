@@ -1,6 +1,6 @@
 # Dark Theme Restyle: Grayscale Palette, Light-Grey Hover
 
-Status: ready-for-agent
+Status: done (31ab117)
 
 ## Problem Statement
 
