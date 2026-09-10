@@ -23,7 +23,7 @@ export function QuestionCard({
 }: QuestionCardProps) {
   return (
     <fieldset className="rounded-lg border border-border bg-surface p-4">
-      <legend className="mb-2 px-1 text-sm font-medium">
+      <legend className="mb-2 px-1 text-lg font-medium">
         {index}. {prompt}
       </legend>
       <div className="space-y-2">

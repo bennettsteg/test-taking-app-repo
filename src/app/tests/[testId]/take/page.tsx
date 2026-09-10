@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { shuffleArray } from "@/lib/shuffle";
 import { TakeTestClient } from "@/components/TakeTestClient";
 
 export default async function TakeTestPage({
@@ -29,10 +30,12 @@ export default async function TakeTestPage({
 
   if (!test) notFound();
 
+  const questions = shuffleArray(test.questions);
+
   return (
     <div>
       <h1 className="mb-4 text-lg font-semibold">{test.title}</h1>
-      <TakeTestClient testId={test.id} questions={test.questions} />
+      <TakeTestClient testId={test.id} questions={questions} />
     </div>
   );
 }
