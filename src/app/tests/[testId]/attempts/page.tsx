@@ -50,7 +50,7 @@ export default async function AttemptHistoryPage({
                 <td className="py-2 text-right">
                   <Link
                     href={`/tests/${test.id}/attempts/${attempt.id}`}
-                    className="text-blue-600 hover:underline"
+                    className="text-crimson hover:underline"
                   >
                     View
                   </Link>

@@ -40,7 +40,7 @@ export function QuestionCard({
             }
           } else {
             labelClass += isSelected
-              ? " border-neutral-900"
+              ? " border-black"
               : " border-neutral-200 hover:border-neutral-400";
           }
 

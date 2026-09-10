@@ -72,7 +72,7 @@ export function TakeTestClient({ testId, questions }: { testId: number; question
           type="button"
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="rounded-md bg-neutral-900 px-4 py-2 text-sm text-white hover:bg-neutral-700 disabled:opacity-50"
+          className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800 disabled:opacity-50"
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>

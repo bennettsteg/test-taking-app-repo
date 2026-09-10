@@ -35,7 +35,7 @@ export default async function TestDetailPage({
       <div className="mt-6 flex gap-3">
         <Link
           href={`/tests/${test.id}/take`}
-          className="rounded-md bg-neutral-900 px-4 py-2 text-sm text-white hover:bg-neutral-700"
+          className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800"
         >
           Start Test
         </Link>

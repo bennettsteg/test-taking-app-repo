@@ -23,7 +23,7 @@ export function TestCard({ test }: { test: TestSummary }) {
           </p>
         </div>
         <div className="flex shrink-0 flex-col items-end gap-2 text-sm">
-          <Link href={`/tests/${test.id}`} className="font-medium text-blue-600 hover:underline">
+          <Link href={`/tests/${test.id}`} className="font-medium text-crimson hover:underline">
             View
           </Link>
           <Link

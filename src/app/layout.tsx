@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
+import { NavBar } from "@/components/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,20 +24,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-neutral-50 text-neutral-900">
-        <header className="border-b border-neutral-200 bg-white">
-          <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-            <Link href="/" className="font-semibold">
-              Practice Tests
-            </Link>
-            <Link
-              href="/tests/upload"
-              className="rounded-md bg-neutral-900 px-3 py-1.5 text-sm text-white hover:bg-neutral-700"
-            >
-              Upload Test
-            </Link>
-          </div>
-        </header>
+      <body className="min-h-full flex flex-col bg-white text-black">
+        <NavBar />
         <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
       </body>
     </html>

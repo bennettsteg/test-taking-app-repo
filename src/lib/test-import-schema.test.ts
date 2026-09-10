@@ -69,6 +69,36 @@ describe("testImportSchema", () => {
     expect(result.success).toBe(false);
   });
 
+  it("accepts a multiple_choice question with 4 options", () => {
+    const result = testImportSchema.safeParse({
+      title: "Max Options Test",
+      questions: [
+        {
+          type: "multiple_choice",
+          prompt: "Pick one",
+          options: ["A", "B", "C", "D"],
+          correctAnswer: "A",
+        },
+      ],
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects a multiple_choice question with 5 options", () => {
+    const result = testImportSchema.safeParse({
+      title: "Too Many Options Test",
+      questions: [
+        {
+          type: "multiple_choice",
+          prompt: "Pick one",
+          options: ["A", "B", "C", "D", "E"],
+          correctAnswer: "A",
+        },
+      ],
+    });
+    expect(result.success).toBe(false);
+  });
+
   it("rejects a true_false question with a non-boolean correctAnswer", () => {
     const result = testImportSchema.safeParse({
       title: "Bad Test",

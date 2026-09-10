@@ -84,7 +84,7 @@ export function UploadForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="rounded-md bg-neutral-900 px-4 py-2 text-sm text-white hover:bg-neutral-700 disabled:opacity-50"
+        className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800 disabled:opacity-50"
       >
         {isSubmitting ? "Uploading..." : "Upload"}
       </button>

@@ -5,7 +5,8 @@ const multipleChoiceQuestionSchema = z.object({
   prompt: z.string().min(1, "prompt is required"),
   options: z
     .array(z.string().min(1, "option text cannot be empty"))
-    .min(2, "multiple_choice questions need at least 2 options"),
+    .min(2, "multiple_choice questions need at least 2 options")
+    .max(4, "multiple_choice questions allow at most 4 options"),
   correctAnswer: z.string().min(1, "correctAnswer is required"),
   explanation: z.string().optional(),
 });

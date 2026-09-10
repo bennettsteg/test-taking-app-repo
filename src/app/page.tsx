@@ -1,47 +1,28 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
-import { TestCard } from "@/components/TestCard";
 
-export default async function LibraryPage() {
-  const tests = await prisma.test.findMany({
-    orderBy: { createdAt: "desc" },
-    select: {
-      id: true,
-      title: true,
-      description: true,
-      createdAt: true,
-      _count: { select: { questions: true } },
-    },
-  });
-
-  if (tests.length === 0) {
-    return (
-      <div className="rounded-lg border border-dashed border-neutral-300 p-8 text-center">
-        <p className="text-neutral-600">No tests yet.</p>
+export default function HomePage() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-semibold text-black">Welcome to Practice Tests</h1>
+        <p className="mt-2 text-neutral-600">
+          Turn your notes into practice tests, then take them and review your score.
+        </p>
+      </div>
+      <div className="flex gap-3">
         <Link
-          href="/tests/upload"
-          className="mt-3 inline-block rounded-md bg-neutral-900 px-4 py-2 text-sm text-white hover:bg-neutral-700"
+          href="/tests/create"
+          className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800"
         >
-          Upload your first test
+          Create New Test
+        </Link>
+        <Link
+          href="/tests"
+          className="rounded-md border border-neutral-300 px-4 py-2 text-sm text-black hover:bg-neutral-100"
+        >
+          View Existing Tests
         </Link>
       </div>
-    );
-  }
-
-  return (
-    <ul className="space-y-3">
-      {tests.map((test) => (
-        <TestCard
-          key={test.id}
-          test={{
-            id: test.id,
-            title: test.title,
-            description: test.description,
-            questionCount: test._count.questions,
-            createdAt: test.createdAt.toISOString(),
-          }}
-        />
-      ))}
-    </ul>
+    </div>
   );
 }

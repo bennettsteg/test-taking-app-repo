@@ -27,6 +27,7 @@
               },
               "options": {
                 "minItems": 2,
+                "maxItems": 4,
                 "type": "array",
                 "items": {
                   "type": "string",
