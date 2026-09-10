@@ -148,14 +148,21 @@ but the multi-schema scoping should stay regardless — it's cheap insurance.
 
 Deploys via Docker to the user's home server. Postgres is **not** part of this project's
 Docker setup — an existing Postgres server already runs there, and this app gets its own
-dedicated database on it. `docker-compose.yml` therefore only defines an `app` service;
-`DATABASE_URL` (supplied via a `.env` file next to the compose file on the server) points
-at the existing Postgres host and the new database.
+dedicated database on it. `docker-compose.yml` defines two services: `migrate`, which
+runs `prisma migrate deploy` (applies `prisma/migrations/`) and exits, and `app`, which
+`depends_on` `migrate` with `condition: service_completed_successfully` so it never
+starts against an unmigrated schema. `DATABASE_URL` (supplied via a `.env` file next to
+the compose file on the server) points at the existing Postgres host and the new
+database.
 
-First deploy: `docker compose build`, then
-`docker compose run --rm app npx prisma migrate deploy` (applies
-`prisma/migrations/`), then `docker compose up -d`. Re-run the `migrate deploy` step
-after any future schema change. See `README.md` for the full command sequence.
+Both services build from the same `Dockerfile` `runner` stage — it already carries the
+Prisma CLI, `prisma/schema.prisma`, and `prisma/migrations/` (copied in for the
+`docker compose run --rm app npx prisma migrate deploy` workflow this replaced), so
+`migrate` doesn't need to target the `builder` stage.
+
+Deploy (first time and every time after): `docker compose build`, then
+`docker compose up -d` — `migrate` runs automatically before `app` (re)starts. No
+separate manual migration step. See `README.md` for the full command sequence.
 
 ## Agent skills
 

@@ -116,9 +116,12 @@ database.
 
    ```bash
    docker compose build
-   docker compose run --rm app npx prisma migrate deploy
    docker compose up -d
    ```
-4. After any future schema change, re-run `docker compose run --rm app npx prisma migrate deploy`.
+
+   The `migrate` service runs `prisma migrate deploy` and exits; `app` waits for it to
+   complete successfully before starting.
+4. After any future schema change, just `docker compose up -d` again — `migrate` re-runs
+   automatically before `app` restarts.
 
 See `CLAUDE.md` for the full architecture and schema details.
