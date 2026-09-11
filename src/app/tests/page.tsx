@@ -2,6 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { TestCard } from "@/components/TestCard";
 
+export const dynamic = "force-dynamic";
+
 export default async function LibraryPage() {
   const tests = await prisma.test.findMany({
     orderBy: { createdAt: "desc" },
