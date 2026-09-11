@@ -1,6 +1,6 @@
 # Site Redesign: Crimson UI, Nav Restructure, and Hand-Authored Test Creation
 
-Status: ready-for-agent
+Status: done (8a133f6)
 
 ## Problem Statement
 

@@ -10,7 +10,7 @@ ticket 04.
 
 **Blocked by:** 01 (Restyle app + persistent nav bar + Home page + relocated Library)
 
-**Status:** ready-for-agent
+**Status:** done (8a133f6)
 
 - [ ] "Create New Test" in the nav bar reaches a choice page presenting "Create by Hand"
       and "Upload JSON"

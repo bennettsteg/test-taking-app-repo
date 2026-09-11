@@ -21,7 +21,7 @@ indistinguishable from one created via JSON Upload (same grading behavior).
 **Blocked by:** 02 ("Create New Test" choice page, with Upload JSON routed through it),
 03 (Multiple-choice options capped at 2–4)
 
-**Status:** ready-for-agent
+**Status:** done (8a133f6)
 
 - [ ] "Create by Hand" reaches the new form
 - [ ] User can add/remove questions, pick each question's type, and see only the fields

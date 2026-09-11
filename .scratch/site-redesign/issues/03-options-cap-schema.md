@@ -11,7 +11,7 @@ respects the cap.
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done (8a133f6)
 
 - [ ] A multiple-choice question with 4 options passes validation
 - [ ] A multiple-choice question with 5 options fails validation with a clear issue
