@@ -4,6 +4,8 @@ services:
     command: ["npx", "prisma", "migrate", "deploy"]
     environment:
       DATABASE_URL: ${DATABASE_URL}
+    networks:
+      - database-network
 
   app:
     build: .
@@ -16,3 +18,9 @@ services:
     depends_on:
       migrate:
         condition: service_completed_successfully
+    networks:
+      - database-network
+
+networks:
+  database-network:
+    external: true
